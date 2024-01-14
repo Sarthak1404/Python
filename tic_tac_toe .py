@@ -90,9 +90,6 @@ def comp_turn(board):
            if(score>value):
                value=score
                pos=i
-               print(f"Score {score} after {i}")
-               print(f"Value  {value} after {i}")
-               print(f"[Pos] {pos} after {i}")   
     board[pos]=1
 
 def minmax(board, player):
@@ -114,3 +111,4 @@ def minmax(board, player):
             return 0
         else:
             return value
+main()       
