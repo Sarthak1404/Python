@@ -114,4 +114,4 @@ def minmax(board, player):
             return 0
         else:
             return value
-main()       
+      
