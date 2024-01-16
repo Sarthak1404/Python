@@ -1,25 +1,25 @@
 def main():
-    user_choice = 'y'
+    user_choice = 'y'    
     while (user_choice == 'y'):
         choice = int(input("Enter 1 for Single Player, 2 for Multiplayer: ")) # Choice for single player and multiplayer
         board = [0,0,0,0,0,0,0,0,0]  # Initialization of board
-        if(choice==1):
+        if(choice==1):               # For Single Player
             print("Computer: 0 vs You: X")
             player_number = int(input("Enter to 1 to play 1st or 2 to play 2nd: ")) # Choice to play first or second
             for i in range(0,9):
-                if(analyze_board(board)!=0):
+                if(analyze_board(board)!=0): # Returns winner 
                     break
                 # (i+player)%2 to check the turn is of player 1(human) or player 2(computer)
-                if((i+player_number)%2==0): # computers turn
+                if((i+player_number)%2==0):  # Computers turn
                     comp_turn(board)
                 else:
-                    const_board(board)
+                    const_board(board)       # Player turn
                     user1_turn(board)
-        else:
+        else:                                # For Multiplayer 
             for i in range(0,9):
-                if(analyze_board(board)!=0):
+                if(analyze_board(board)!=0): # Returns winner
                     break
-                # (i+player)%2 to check the turn is of player 1 for player 2
+                # (i)%2 to check the turn is of player 1 for player 2
                 if((i)%2==0): # player 1 turn
                     const_board(board)
                     user1_turn(board)
@@ -73,12 +73,12 @@ def user2_turn(board):
         board[pos-1] = 1
 
 def analyze_board(board):
-    cases = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],[3,6,9]]
+    cases = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     for i in range(0,8):
         if(board[cases[i][0]]!=0 and 
            board[cases[i][0]]==board[cases[i][1]] and 
            board[cases[i][0]]==board[cases[i][2]]):
-            return board[cases[i][0]]
+            return board[cases[i][0]]       # Returns -1,1
         else:
             return 0
 
